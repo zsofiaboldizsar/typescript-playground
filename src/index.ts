@@ -1,4 +1,6 @@
-// ?? never, enum, excess property errors, 
+// ?? never, enum, excess property errors, return result > -1, Difference between the static and instance sides of classes, You’ll notice that in the class when we refer to one of the members of the class we prepend this.. This denotes that it’s a member access.
+// super() to execute the constructor of the base class, what is member in Typscript (they are public by default)?
+// static properties: static accesses through prepending the name of the class
 
 // Classes
 class Greeter {
@@ -10,8 +12,8 @@ class Greeter {
         return "hello " + this.greeting;
     }
 }
-
-let greeter = new Greeter("world");
+let greeter: Greeter; // we’re using Greeter as the type of instances of the class Greeter
+greeter = new Greeter("world");
 console.log(greeter.greet());
 
 class Vegetable {
@@ -168,3 +170,128 @@ function labelledObject(obj: LabelledValue) {
 }
 let labelO = { a: "Zsofi", label: "this is the label", c: 15 };
 console.log(labelledObject(labelO));
+
+// describe a function type with an interface
+interface searchFunction {
+    (source: string, substring: string): boolean;
+}
+
+let mySearch: searchFunction;
+mySearch = function (source: string, substring: string) {
+    let result = source.search(substring);
+    console.log(result);
+    return result > -1;
+}
+console.log(mySearch("hello", "lo"));
+
+// index signature describes the types we can use to index into the object, along with the corresponding return types when indexing
+// There are two types of supported index signatures: string and number
+interface StringArray {
+    [index: number]: string;
+}
+let myStringArray: StringArray;
+myStringArray = ["Zsofi", "Kinga"];
+console.log(myStringArray[0]);
+
+// Classes - inheritance feature: classes inherit properties and methods from base classes
+
+// Animals is the base class (superclass)
+class Animals {
+    move(distanceInMeters: number = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`)
+    }
+}
+// Dog is a derived class, a subclass of Animals
+class Dog extends Animals {
+    bark() {
+        console.log("Woof woof");
+    };
+}
+let myDog = new Dog();
+myDog.bark();
+myDog.move(10);
+
+// readonly, protected, private, public
+
+class Family {
+    readonly name: string;
+    readonly members: number;
+    protected constructor(theName: string) {
+        this.name = theName;
+    }
+    public sayHello() {
+        console.log(`Say hello to ${this.name}.`)
+    }
+}
+
+// let myFamily = new Family("Hopps"); - throws error as contstructor is protected
+
+
+// Accessors: getters and setters
+// accessors require you to set the compiler to output ECMAScript 5 or higher. 
+// Downlevelling to ECMAScript 3 is not supported. 
+// The below throws an error:
+
+// let passcode = "secret passcode";
+
+// class Employee {
+//     firstName: string;
+//     lastName: string;
+//     private fullName: string;
+//     constructor(firstName: string, lastName: string) {
+//         this.fullName = this.firstName + " " + this.lastName;
+//     }
+//     get fullNameEmployee(): string {
+//         return this.fullName;
+//     }
+
+//     set updatedFullName(updatedName: string) {
+//         if (passcode && passcode == "secret passcode") {
+//             return this.fullName = updatedName;
+//         }
+//         else {
+//             console.log("Error: Unauthorized update of employee!");
+//         }
+//     }
+// }
+
+// Functions
+const myAdd = (x: number, y: number): number => { return x + y };
+
+// Optional and default-initialized params
+// If a default-initialized parameter comes before a required parameter, users need to explicitly pass undefined to get the default initialized value.
+const myFullName = (firstName: string, lastName?: string): string => {
+    if (lastName) {
+        return firstName + lastName;
+    }
+    else {
+        return firstName;
+    }
+};
+
+const myFullNameDefault = (firstName: string, lastName = "Boldizsar"): string => {
+    return firstName + " " + lastName;
+};
+
+// Rest parameters are treated as a boundless number of optional parameters.
+const buildName = (firstName: string, ...restOfName: string[]): string => {
+    return firstName + " " + restOfName.join(".");
+}
+console.log(buildName("Joseph", "Samuel", "Lucas", "MacKinzie"));
+
+// This
+let hello = (thing: string): void => {
+    console.log(this + "says hello " + thing);
+};
+hello.call("Zsofi", "world"); // => [object Object]says hello world
+
+const person = {
+    person: "Zsofi",
+    hello(thing) {
+        console.log(this.person + " says hello " + thing);
+    }
+};
+person.hello("world");
+
+// Arrow functions capture the "this" where the function is created rather than where it is invoked
+
