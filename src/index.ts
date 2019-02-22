@@ -2,7 +2,7 @@
 // super() to execute the constructor of the base class, what is member in Typscript (they are public by default)?
 // static properties: static accesses through prepending the name of the class
 
-// Classes
+// Classes 
 class Greeter {
     greeting: string;
     constructor(message: string) {
