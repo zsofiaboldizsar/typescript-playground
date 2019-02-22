@@ -1,6 +1,7 @@
 // ?? never, enum, excess property errors, return result > -1, Difference between the static and instance sides of classes, You’ll notice that in the class when we refer to one of the members of the class we prepend this.. This denotes that it’s a member access.
 // super() to execute the constructor of the base class, what is member in Typscript (they are public by default)?
 // static properties: static accesses through prepending the name of the class
+// add more here
 
 // Classes 
 class Greeter {
