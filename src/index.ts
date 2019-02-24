@@ -1,4 +1,4 @@
-// ?? never, enum, excess property errors, return result > -1, Difference between the static and instance sides of classes, You’ll notice that in the class when we refer to one of the members of the class we prepend this.. This denotes that it’s a member access.
+// ?? never, excess property errors, return result > -1, Difference between the static and instance sides of classes, You’ll notice that in the class when we refer to one of the members of the class we prepend this.. This denotes that it’s a member access.
 // super() to execute the constructor of the base class, what is member in Typscript (they are public by default)?
 // static properties: static accesses through prepending the name of the class
 // add more here
@@ -296,3 +296,38 @@ person.hello("world");
 
 // Arrow functions capture the "this" where the function is created rather than where it is invoked
 
+
+// Enums - are set of name constans
+// string or numeric
+// can be computed or constant
+// enums w/o initializers must come first
+// enums are real objects that exist at runtime
+
+enum NumericEnums {
+    // constant enum members
+    Up = 1,
+    Down,
+    Left,
+    Right
+}
+enum StringEnums {
+    // constant enum members
+    U = "Up",
+    D = "Down",
+    L = "Left",
+    R = "Right",
+}
+enum ComputedEnums {
+    G = "123".length
+}
+
+function enumsAtRuntime (obj: { Down: number }) {
+    return obj.Down;
+}
+console.log(enumsAtRuntime(NumericEnums));
+
+// Numeric enums get a reverse mapping value -› name, it does not work with string enums
+let propertyValue = NumericEnums.Up;
+console.log("That's the value of the member: " + propertyValue);
+let propertyName = NumericEnums[propertyValue];
+console.log("With reverse mapping you can get to the name of the member: " + propertyName);
