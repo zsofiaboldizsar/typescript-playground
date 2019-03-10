@@ -1,6 +1,6 @@
 export enum AnimalTypes {
     HORSE,
     DOG,
-    CAT,
-    VOMBAT,
+    ELEFANT,
+    FISH,
 }
