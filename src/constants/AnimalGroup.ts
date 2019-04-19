@@ -1,4 +1,4 @@
-export enum AnimalGroups {
+export enum AnimalGroup {
     BIRDS,
     FISH,
     REPTILES,
