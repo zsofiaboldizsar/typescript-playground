@@ -1,14 +1,15 @@
-import { AnimalGroups } from '../constants/AnimalGroups';
+import { AnimalGroup } from '../constants/AnimalGroup';
 import { Habitat } from '../constants/Habitat';
+// import { Sound } from '../constants/Sound';
 
 // Abstract classes are base classes from which other classes may be derived. They may not be instantiated directly
 export abstract class Animals {
 
     public readonly name: string;
-    public readonly group: AnimalGroups;
+    public readonly group: AnimalGroup;
 
     // if a constructor is protected, it means that the class cannot be instantiated outside of its containing class, but can be extended
-    protected constructor(theName: string, theGroup: AnimalGroups) {
+    protected constructor(theName: string, theGroup: AnimalGroup) {
         this.name = theName;
         this.group = theGroup;
     }
