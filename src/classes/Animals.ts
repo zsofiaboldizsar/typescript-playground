@@ -1,5 +1,6 @@
 import { AnimalGroup } from '../constants/AnimalGroup';
 import { Habitat } from '../constants/Habitat';
+// import { Sound } from '../constants/Sound';
 
 // Abstract classes are base classes from which other classes may be derived. They may not be instantiated directly
 export abstract class Animals {
