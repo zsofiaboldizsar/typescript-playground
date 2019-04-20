@@ -9,6 +9,7 @@ export class Dog extends Mammals {
 
     // readonly properties must be initialized at their declaration or in the constructor
     readonly legs: Legs.MammalsNrOfLegs;
+    // private members annot be accessed from outside of its containing class
     private name: string;
     sound: Sound.DogSound;
 
@@ -17,18 +18,19 @@ export class Dog extends Mammals {
             group: AnimalGroup.MAMMALS,
             sound: Sound.DogSound
         });
+        this.name = name;
     }
     introduction(): string {
         return `Dog name is: ${this.name}, belongs to this animal group: ${this.group}.`
     }
-    getHabitat(habitat: Habitat): void {
-        if (this.sound) {
-            habitat = Habitat.HOME;
-            console.log(`${this.name} lives in ${habitat}.`);
-        }
+    getHabitat(habitat = Habitat.HOME): void {
+        console.log(`${this.name} lives ${habitat}.`);
     }
-
-    // get dogName(): string { return this.name };
-
-    // set dogName(newName: string) { this.name = newName };
+    // Accessors
+    get dogName(): string { return this.name };
+    set dogName(newName: string) { this.name = newName };
 }
+
+
+
+
