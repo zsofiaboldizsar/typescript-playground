@@ -1,8 +1,8 @@
 export enum AnimalGroup {
-    BIRDS,
-    FISH,
-    REPTILES,
-    AMPHIBIANS,
-    MAMMALS,
-    INSECTS,
+    BIRDS = 'birds',
+    FISH = 'fish',
+    REPTILES = 'reptiles',
+    AMPHIBIANS = 'amphibians',
+    MAMMALS = 'mammals',
+    INSECTS = 'insects',
 }
